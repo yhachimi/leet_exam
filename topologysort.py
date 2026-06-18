@@ -21,7 +21,7 @@ def topological_sort(pkgs: dict[str, list[str]]) -> list[str]:
 
 
 depend_pkg: dict[str, list[str]] = {}
-depend_pkg["a"] = ["c", "d", "k"]
+depend_pkg["a"] = ["c", "d", "k", "b"]
 depend_pkg["e"] = ["c", "a"]
 depend_pkg["c"] = ["d"]
 depend_pkg["g"] = ["n", "k"]
