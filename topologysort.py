@@ -1,3 +1,4 @@
+
 def topological_sort(pkgs: dict[str, list[str]]) -> list[str]:
     result: list[str] = []
     visited: set[str] = set()
