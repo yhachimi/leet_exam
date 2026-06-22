@@ -25,7 +25,7 @@ def topological_sort(pkgs: dict[str, list[str]]) -> list[str]:
         visiting.remove(pkg)
         return True
     for pkg in pkgs.keys():
-       pkgs[pkg] = [dep for dep  in  pkgs[pkg] if dep in pkgs] 
+        pkgs[pkg] = [dep for dep in pkgs[pkg] if dep in pkgs]
 
     for pkg in sorted(pkgs.keys(), key=lambda k: (len(pkgs[k]), k)):
         if not dfs(pkg):
