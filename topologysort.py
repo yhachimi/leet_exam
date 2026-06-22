@@ -3,6 +3,11 @@ def topological_sort(pkgs: dict[str, list[str]]) -> list[str]:
     result: list[str] = []
     visited: set[str] = set()
     visiting = set()
+    filtred = {
+        pkg: [dep for dep in deps if dep in pkgs]
+        for pkg, deps in pkgs.items()
+
+    }
 
     def dfs(pkg: str):
         if pkg in visited:
@@ -11,23 +16,18 @@ def topological_sort(pkgs: dict[str, list[str]]) -> list[str]:
         if pkg in visiting:
             return False
 
-        if pkg not in pkgs.keys():
-            return True
-
         visiting.add(pkg)
 
-        for dep in sorted(pkgs.get(pkg, [])):
+        for dep in sorted(filtred.get(pkg, [])):
             if not dfs(dep):
                 return False
 
+        visiting.remove(pkg)
         visited.add(pkg)
         result.append(pkg)
-        visiting.remove(pkg)
         return True
-    for pkg in pkgs.keys():
-        pkgs[pkg] = [dep for dep in pkgs[pkg] if dep in pkgs]
 
-    for pkg in sorted(pkgs.keys(), key=lambda k: (len(pkgs[k]), k)):
+    for pkg in sorted(filtred.keys(), key=lambda k: (len(filtred[k]), k)):
         if not dfs(pkg):
             return []
 
