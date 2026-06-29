@@ -1,0 +1,47 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c3r3p2.1337.ma
+Linux 6.8.0-124-generic x86_64
+$> date
+Thu Jun 18 10:09:30 AM +01 2026
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: git@vogsphere.1337.ma:exam-2026-06-18/sksioui_42next-exam-rank-02_exam_18h57m00s.git
+
+= Git history ==================================================================
+$> git -C /tmp/tmpljrwrj6k/user log --pretty='%H - %an, %ad : %s'
+be7bea90b2b564851ff463f651d773b5367051c7 - Exam 42, Thu Jun 18 10:09:07 2026 +0100 : done
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpljrwrj6k/user
+/tmp/tmpljrwrj6k/user:
+total 8
+-rw-r--r-- 1 root root  239 Jun 18 10:09 __GIT_HISTORY
+drwxr-xr-x 2 root root 4096 Jun 18 10:09 py_constellation_mapper
+
+/tmp/tmpljrwrj6k/user/py_constellation_mapper:
+total 4
+-rw-r--r-- 1 root root 321 Jun 18 10:09 py_constellation_mapper.py
+ 
+= py_constellation_mapper ======================================================
+Test 1: PASS
+Test 2: PASS
+Test 3: PASS
+Test 4: PASS
+Test 5: PASS
+Test 6: PASS
+Test 7: PASS
+Test 8: PASS
+Test 9: PASS
+Test 10: PASS
+Test 11: PASS
+Test 12: PASS
+Test 13: PASS
+Test 14: PASS
+Test 15: PASS
+Test 16: PASS
+Test 17: PASS
+Grade: 1
+
+= Final grade: 1 ===============================================================

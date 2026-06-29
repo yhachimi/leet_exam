@@ -1,0 +1,66 @@
+constellation_mapper([(0, 0), (1, 1), (1, 1), (2, 2)], 3)
+constellation_mapper([(1, 1), (0, 1), (2, 1), (1, 0), (1, 2)], 3)
+constellation_mapper([], 2)
+constellation_mapper([(0, 0), (0, 0), (1, 1)], 2)
+constellation_mapper([(0, 0), (5, 5)], 3)
+constellation_mapper([(1, 0), (1, 1), (1, 2)], 3)
+
+
+list_intersection_finder([[1, 2, 3], [2, 3, 4], [2, 3, 5]])
+list_intersection_finder([[1, 2, 3, 4], [2, 4, 6, 8], [4, 8, 12]])
+list_intersection_finder([[1, 2, 3], [4, 5, 6]])
+list_intersection_finder([[1, 1, 2, 3], [1, 2, 2, 3], [1, 2, 3, 3]])
+list_intersection_finder([])
+list_intersection_finder([[1, 2, 3], []])
+list_intersection_finder([[5]])
+
+
+package_dependency_resolver({
+    "A": [],
+    "B": ["A"],
+    "C": ["A", "B"]
+})
+
+package_dependency_resolver({})
+package_dependency_resolver({
+    "X": ["Y"],
+    "Y": ["X"]
+})
+
+package_dependency_resolver({
+    "web": [],
+    "api": [],
+    "frontend": ["web"],
+    "backend": ["api"]
+})
+
+
+package_dependency_resolver({
+    "programing": ["python", "math"],
+    "python": ["pc"],
+    "pc": ["money", "knowledge"],
+    "money": ["job"],
+    "job": ["mind"],
+    "mind": []
+})
+
+package_dependency_resolver({'app': ['nonexistent', 'db'], 'db': []})
+
+package_dependency_resolver({
+    "next.js": ["tailwindcss", "javascript"],
+    "tailwindcss": ["CSS"],
+    "CSS": []
+})
+
+package_dependency_resolver({'c': [], 'a': [], 'b': []})
+
+package_dependency_resolver({'ui': ['styles', 'components'], 'styles': [], 'components': ['utils'], 'utils': []})
+
+
+sliding_window_maximum([1, 3, -1, -3, 5, 3, 6, 7], 3)
+sliding_window_maximum([1, 2, 3, 4, 5], 2)
+sliding_window_maximum([5, 4, 3, 2, 1], 1)
+sliding_window_maximum([1, 2, 3], 3)
+sliding_window_maximum([1, 2, 3], 4)
+sliding_window_maximum([], 2)
+sliding_window_maximum([1, 2, 3], 0)
