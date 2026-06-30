@@ -1,29 +1,54 @@
-from collections import deque
 
-def topo_sort_kahn(graph):
-    indegree = {node: 0 for node in graph}
+def package_dependency_resolver(packages: dict[str, list[str]]) -> list[str]:
+    indegree = {pkg: 0 for  pkg in packages}
+    graph = {pkg: [] for pkg in packages}
 
-    # build indegree
-    for node in graph:
-        for nei in graph[node]:
-            indegree[nei] += 1
 
-    # start with nodes that have no dependencies
-    q = deque([node for node in graph if indegree[node] == 0])
+    for pkg, deps in packages.items():
+        for dep in deps: 
+            if dep == pkg:
+                return []
+            if dep not in packages:
+                continue 
+            graph[dep].append(pkg)
+            indegree[pkg] += 1 
+    heap = sorted([pkg for pkg in  packages if indegree[pkg] == 0])
+    order = []
+    while heap:
+        pkg = heap.pop(0)
+        order.append(pkg)
+        for nxt in sorted(graph[pkg]): 
+            indegree[nxt] -= 1
+            if indegree[nxt] == 0:
+                heap.append(nxt)
 
-    result = []
 
-    while q:
-        node = q.popleft()
-        result.append(node)
+        heap.sort()
 
-        for nei in graph[node]:
-            indegree[nei] -= 1
-            if indegree[nei] == 0:
-                q.append(nei)
 
-    # cycle check
-    if len(result) != len(graph):
+    if len(order) != len(packages):
         return []
 
-    return result
+    return  order
+
+
+
+print(package_dependency_resolver({
+    "A": [],
+    "B": ["A"],
+    "C": ["A", "B"]}))
+
+print(package_dependency_resolver({
+    "X": ["Y"],
+    "Y": ["X"]
+}))
+
+print(package_dependency_resolver({}))
+
+print(package_dependency_resolver({
+    "web": [],
+    "api": [],
+    "frontend": ["web"],
+    "backend": ["api"]
+})
+)
